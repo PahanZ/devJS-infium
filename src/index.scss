@@ -1,0 +1,45 @@
+$dividerColor: #e5e7e9; 
+$backSections: #ffffff;
+
+body {
+  background-color: #f1f5f6;
+  #root {
+    margin: 2% 10%;
+    header {
+      height: 50px;
+      display: flex;
+      align-content: center;
+      .tittle {
+        margin: 0 10px;
+        font-weight: bold;
+        color: #8392a0;
+      }
+      .ant-divider-vertical {
+        height: 100%;
+        width: 5px;
+        color: $dividerColor;
+      }
+      .ant-divider-horizontal {
+        height: 3px;
+        color: $dividerColor;
+      }
+    }
+    main {
+      section {
+        background-color: $backSections;
+        padding: 25px;
+      }
+      .actions {
+        margin: 25px 8px;
+      }
+      .invoices {
+        margin: 0 8px;
+        table{
+          td:last-child {
+            width: 300px;
+          }
+        }
+      }
+    }
+  }  
+}
