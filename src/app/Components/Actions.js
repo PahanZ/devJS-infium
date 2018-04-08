@@ -1,13 +1,13 @@
 import React from 'react';
 import {Button} from 'antd';
-
-// import PropTypes from 'prop-types';
-
+import {Link} from 'react-router';
 export default () => {
   return (
     <section className="actions">
       <h2>Actions</h2>
-      <Button type="primary">Add new</Button>
+      <Button type="primary">
+        <Link to="/create">Add new</Link>
+      </Button>
     </section>
   );
 };

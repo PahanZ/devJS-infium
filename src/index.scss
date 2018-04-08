@@ -1,5 +1,6 @@
 $dividerColor: #e5e7e9; 
 $backSections: #ffffff;
+$fontColor: #8392a0;
 
 body {
   background-color: #f1f5f6;
@@ -12,7 +13,8 @@ body {
       .tittle {
         margin: 0 10px;
         font-weight: bold;
-        color: #8392a0;
+        color: $fontColor;
+        width: 245px;
       }
       .ant-divider-vertical {
         height: 100%;
@@ -25,12 +27,17 @@ body {
       }
     }
     main {
-      section {
+      section, form {
         background-color: $backSections;
         padding: 25px;
       }
-      .actions {
+      form, .actions {
         margin: 25px 8px;
+      }
+      label {
+        font-size: large;
+        font-weight: bold;
+        color: $fontColor;
       }
       .invoices {
         margin: 0 8px;
@@ -38,6 +45,14 @@ body {
           td:last-child {
             width: 300px;
           }
+        }
+      }
+      form {
+        .ant-calendar-picker-large {
+          width: 100%;
+        }
+        .submit {
+          text-align: right;
         }
       }
     }

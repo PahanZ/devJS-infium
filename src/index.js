@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, browserHistory} from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import App from './app/app';
-import Header from './app/Components/Header';
-
+import Invoices from './app/Pages/Page1';
+import CreateInvoice from './app/Pages/Page2';
 import './index.scss';
 
 ReactDOM.render(
   <Router history={browserHistory}>
-    <Header/>
-    <Route path="/" component={App}/>
-    <Route path="/createInvoice" component={App}/>
+    <Route path="/" component={App}>
+      <IndexRoute component={Invoices}/>
+      <Route path="/create" component={CreateInvoice}/>
+    </Route>
   </Router>,
   document.getElementById('root')
 );

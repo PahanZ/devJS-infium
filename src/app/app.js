@@ -1,9 +1,21 @@
 import React from 'react';
-import Main from './Components/Main';
+import Header from './Components/Header';
+import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
 
-const App = () => (
-  <Main/>
-);
+const App = props => {
+  const {children, location} = props;
+  return (
+    <div>
+      <Header location={location}/>
+      {children}
+    </div>
+  );
+};
+
+App.propTypes = {
+  children: PropTypes.object,
+  location: PropTypes.object
+};
 
 export default App;

@@ -1,7 +1,6 @@
 import React from 'react';
-import Actions from './Actions';
-import Invoices from './Invoices';
-// import PropTypes from 'prop-types';
+import Actions from '../Components/Actions';
+import Invoices from '../Components/Invoices';
 
 export default () => {
   return (
