@@ -1,12 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Table} from 'antd';
-import {columns, dataFoTabble} from '../data/dataFoTabble';
 
-export default () => {
-  return (
-    <section className="invoices">
-      <h2>Invoices</h2>
-      <Table columns={columns} dataSource={dataFoTabble}/>
-    </section>
-  );
+const Invoices = props => (
+  <section className="invoices">
+    <h2>Invoices</h2>
+    <Table columns={props.tableTittles} dataSource={props.invoicesList}/>
+  </section>
+);
+
+Invoices.propTypes = {
+  invoicesList: PropTypes.array,
+  tableTittles: PropTypes.array
 };
+
+export default Invoices;

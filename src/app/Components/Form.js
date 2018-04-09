@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Form, Icon, Input, DatePicker, Col, Button} from 'antd';
-import {Link} from 'react-router';
+// import {Link} from 'react-router';
 
 const FormItem = Form.Item;
 const InputGroup = Input.Group;
@@ -10,11 +10,7 @@ const {TextArea} = Input;
 export default class HorizontalForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
-    });
+    console.log(e);
   }
   render() {
     return (
@@ -43,8 +39,8 @@ export default class HorizontalForm extends React.Component {
             </Col>
             <Col span={24}>
               <div className="submit">
-                <Button type="primary">
-                  <Link to="/">Save</Link>
+                <Button type="primary">Save
+                  {/* <Link to="/">Save</Link> */}
                 </Button>
               </div>
             </Col>
