@@ -7,22 +7,28 @@ const FormItem = Form.Item;
 const InputGroup = Input.Group;
 const {TextArea} = Input;
 const HorizontalForm = props => {
-  const {number, invoiceDate, supplyDate, comment} = props.inputsAtributes;
+  const {No, Create, Supply, Comment} = props.inputsAtributes;
+  console.log(props.inputsAtributes);
   return (
     <main>
       <Form
-        layout="horizontal" // onSubmit={this.handleSubmit}
+        layout="horizontal"
+        onSubmit={function (e) {
+          e.preventDefault();
+          props.onSubmit();
+        }
+        }
         >
         <InputGroup size="large">
           <Col span={12}>
             <FormItem label="Number">
               <Input
-                name={number.name}
+                name={No.name}
                 size="large"
                 addonAfter={<Icon type="setting"/>}
-                value={number.value}
+                value={No.value}
                 onChange={function (event) {
-                  props.onChange(number.name, event);
+                  props.onChange(No.name, event);
                 }}
                 />
             </FormItem>
@@ -30,12 +36,12 @@ const HorizontalForm = props => {
           <Col span={12}>
             <FormItem label="Invoice Date">
               <DatePicker
-                name={invoiceDate.name}
+                name={Create.name}
                 size="large"
-                value={invoiceDate.value}
+                value={Create.value}
                 format={'Do MMM YY'}
                 onChange={function (event) {
-                  props.onChange(invoiceDate.name, event);
+                  props.onChange(Create.name, event);
                 }}
                 />
             </FormItem>
@@ -43,12 +49,12 @@ const HorizontalForm = props => {
           <Col span={12}>
             <FormItem label="Supply Date">
               <DatePicker
-                name={supplyDate.name}
+                name={Supply.name}
                 size="large"
-                value={supplyDate.value}
+                value={Supply.value}
                 format={'Do MMM YY'}
                 onChange={function (event) {
-                  props.onChange(supplyDate.name, event);
+                  props.onChange(Supply.name, event);
                 }}
                 />
             </FormItem>
@@ -56,11 +62,11 @@ const HorizontalForm = props => {
           <Col span={24}>
             <FormItem label="Comment">
               <TextArea
-                name={comment.name}
+                name={Comment.name}
                 rows={24}
-                value={comment.value}
+                value={Comment.value}
                 onChange={function (event) {
-                  props.onChange(comment.name, event);
+                  props.onChange(Comment.name, event);
                 }}
                 />
             </FormItem>
@@ -81,7 +87,8 @@ const HorizontalForm = props => {
 
 HorizontalForm.propTypes = {
   inputsAtributes: PropTypes.object,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func
 };
 
 export default HorizontalForm;

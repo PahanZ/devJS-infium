@@ -11,6 +11,7 @@ class Page1 extends React.Component {
     this.props.getInvoices(dataFoTabble);
   }
   render() {
+    console.log(this.props.invoices);
     return (
       <main>
         <Actions/>
@@ -20,17 +21,20 @@ class Page1 extends React.Component {
   }
 }
 
+Page1.propTypes = {
+  getInvoices: PropTypes.func,
+  invoices: PropTypes.obj
+};
+
 const mapStateToProps = state => ({
   invoices: state.getInvoices
 });
 
-const mapDispatchToProps = {
-  getInvoices
-};
-
-Page1.propTypes = {
-  getInvoices: PropTypes.func
-};
+const mapDispatchToProps = dispatch => ({
+  getInvoices: dataFoTabble => {
+    dispatch(getInvoices(dataFoTabble));
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page1);
 

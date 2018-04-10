@@ -1,11 +1,11 @@
-const getInvoices = data => ({
+const getInvoices = payload => ({
   type: 'getInvoices',
-  payload: data
+  payload
 });
 
-const addInvoice = data => ({
+const addInvoice = payload => ({
   type: 'addInvoice',
-  payload: data
+  payload
 });
 
 export {getInvoices, addInvoice};
