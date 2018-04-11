@@ -1,6 +1,7 @@
 import {getInvoices, addInvoice} from '../constants';
+import {dataFoTabble} from '../../data/dataFoTabble';
 
-export default (state = [], action) => {
+export default (state = dataFoTabble, action) => {
   if (action.type === getInvoices) {
     return action.payload;
   }

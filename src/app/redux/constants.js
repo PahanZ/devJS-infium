@@ -1,4 +1,4 @@
 const getInvoices = 'getInvoices';
 const addInvoice = 'addInvoice';
-
-export {getInvoices, addInvoice};
+const redirect = 'redirect';
+export {getInvoices, addInvoice, redirect};

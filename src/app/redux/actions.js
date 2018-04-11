@@ -1,11 +1,16 @@
-const getInvoices = payload => ({
+const getInvoices = data => ({
   type: 'getInvoices',
-  payload
+  payload: data
 });
 
-const addInvoice = payload => ({
+const addInvoice = data => ({
   type: 'addInvoice',
-  payload
+  payload: data
 });
 
-export {getInvoices, addInvoice};
+const redirect = data => ({
+  type: 'redirect',
+  payload: data
+});
+
+export {getInvoices, addInvoice, redirect};

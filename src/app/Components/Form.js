@@ -1,21 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Form, Icon, Input, DatePicker, Col, Button} from 'antd';
-// import {Link} from 'react-router';
 
 const FormItem = Form.Item;
 const InputGroup = Input.Group;
 const {TextArea} = Input;
 const HorizontalForm = props => {
   const {No, Create, Supply, Comment} = props.inputsAtributes;
-  console.log(props.inputsAtributes);
   return (
     <main>
       <Form
         layout="horizontal"
         onSubmit={function (e) {
-          e.preventDefault();
-          props.onSubmit();
+          props.onSubmit(e);
         }
         }
         >
@@ -23,12 +20,12 @@ const HorizontalForm = props => {
           <Col span={12}>
             <FormItem label="Number">
               <Input
-                name={No.name}
+                name="No"
                 size="large"
                 addonAfter={<Icon type="setting"/>}
-                value={No.value}
+                value={No}
                 onChange={function (event) {
-                  props.onChange(No.name, event);
+                  props.onChange('No', event);
                 }}
                 />
             </FormItem>
@@ -36,12 +33,12 @@ const HorizontalForm = props => {
           <Col span={12}>
             <FormItem label="Invoice Date">
               <DatePicker
-                name={Create.name}
+                name="Create"
                 size="large"
-                value={Create.value}
+                value={Create}
                 format={'Do MMM YY'}
                 onChange={function (event) {
-                  props.onChange(Create.name, event);
+                  props.onChange('Create', event);
                 }}
                 />
             </FormItem>
@@ -49,12 +46,12 @@ const HorizontalForm = props => {
           <Col span={12}>
             <FormItem label="Supply Date">
               <DatePicker
-                name={Supply.name}
+                name="Supply"
                 size="large"
-                value={Supply.value}
+                value={Supply}
                 format={'Do MMM YY'}
                 onChange={function (event) {
-                  props.onChange(Supply.name, event);
+                  props.onChange('Supply', event);
                 }}
                 />
             </FormItem>
@@ -62,20 +59,18 @@ const HorizontalForm = props => {
           <Col span={24}>
             <FormItem label="Comment">
               <TextArea
-                name={Comment.name}
+                name="Comment"
                 rows={24}
-                value={Comment.value}
+                value={Comment}
                 onChange={function (event) {
-                  props.onChange(Comment.name, event);
+                  props.onChange('Comment', event);
                 }}
                 />
             </FormItem>
           </Col>
           <Col span={24}>
             <div className="submit">
-              <Button type="primary" htmlType="submit">Save
-                {/* <Link to="/">Save</Link> */}
-              </Button>
+              <Button type="primary" htmlType="submit">Save</Button>
             </div>
           </Col>
         </InputGroup>
@@ -83,7 +78,6 @@ const HorizontalForm = props => {
     </main>
   );
 };
-// }
 
 HorizontalForm.propTypes = {
   inputsAtributes: PropTypes.object,

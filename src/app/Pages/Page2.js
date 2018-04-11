@@ -1,31 +1,37 @@
 import React from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {addInvoice} from '../redux/actions';
+import {addInvoice, redirect} from '../redux/actions';
 import Form from '../Components/Form';
 
 class Page2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Create: {name: 'Create', value: moment()},
-      No: {name: 'No', value: 'INV '},
-      Supply: {name: 'Supply', value: moment()},
-      Comment: {name: 'Comment', value: ''}
+      Create: null,
+      No: 'INV ',
+      Supply: null,
+      Comment: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit() {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isRedirect !== nextProps) {
+      this.props.router.push('/');
+    }
+  }
+  handleSubmit(e) {
+    e.preventDefault();
     this.props.addInvoice(this.state);
+    this.props.redirect(true);
   }
   handleChange(objName, e) {
     const newValue = (e.target) ? e.target.value : e;
-    this.setState({[objName]: {name: objName, value: newValue}});
+    this.setState({[objName]: newValue});
   }
   render() {
-    console.log(this.props.invoices);
+    // console.log(this.props);
     return (
       <Form inputsAtributes={this.state} onChange={this.handleChange} onSubmit={this.handleSubmit}/>
     );
@@ -34,17 +40,18 @@ class Page2 extends React.Component {
 
 Page2.propTypes = {
   addInvoice: PropTypes.func,
-  invoices: PropTypes.obj
+  redirect: PropTypes.func,
+  isRedirect: PropTypes.bool,
+  router: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  invoices: state
+  isRedirect: state.redirect
 });
 
-const mapDispatchToProps = dispatch => ({
-  addInvoice: newInvoice => {
-    dispatch(addInvoice(newInvoice));
-  }
-});
+const mapDispatchToProps = {
+  addInvoice,
+  redirect
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page2);
