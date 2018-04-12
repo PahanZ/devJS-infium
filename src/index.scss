@@ -42,7 +42,7 @@ body {
       .invoices {
         margin: 0 8px;
         table{
-          td:last-child {
+          td:nth-child(4) {
             width: 300px;
           }
         }

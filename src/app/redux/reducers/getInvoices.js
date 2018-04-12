@@ -1,5 +1,5 @@
 import {getInvoices, addInvoice} from '../constants';
-import {dataFoTabble} from '../../data/dataFoTabble';
+import dataFoTabble from '../../data/dataFoTabble';
 
 export default (state = dataFoTabble, action) => {
   if (action.type === getInvoices) {

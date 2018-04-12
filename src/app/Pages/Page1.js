@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {getInvoices, redirect} from '../redux/actions';
 import PropTypes from 'prop-types';
 import Actions from '../Components/Actions';
-import Invoices from '../Components/Invoices';
+import {Invoices} from '../Components/Invoices';
 import {columns} from '../data/dataFoTabble';
 
 class Page1 extends React.Component {
@@ -12,7 +12,6 @@ class Page1 extends React.Component {
     this.props.getInvoices(this.props.invoices);
   }
   render() {
-    console.log(this.props.invoices);
     return (
       <main>
         <Actions/>
