@@ -25,7 +25,7 @@ const HorizontalForm = props => {
                 addonAfter={<Icon type="setting"/>}
                 value={No}
                 onChange={function (event) {
-                  props.onChange('No', event);
+                  props.onChange(event.target.name, event);
                 }}
                 />
             </FormItem>
@@ -36,9 +36,9 @@ const HorizontalForm = props => {
                 name="Create"
                 size="large"
                 value={Create}
-                format={'Do MMM YY'}
+                format={'Do MMMM YY'}
                 onChange={function (event) {
-                  props.onChange('Create', event);
+                  props.onChange(this.name, event);
                 }}
                 />
             </FormItem>
@@ -49,9 +49,9 @@ const HorizontalForm = props => {
                 name="Supply"
                 size="large"
                 value={Supply}
-                format={'Do MMM YY'}
+                format={'Do MMMM YY'}
                 onChange={function (event) {
-                  props.onChange('Supply', event);
+                  props.onChange(this.name, event);
                 }}
                 />
             </FormItem>
@@ -63,14 +63,14 @@ const HorizontalForm = props => {
                 rows={24}
                 value={Comment}
                 onChange={function (event) {
-                  props.onChange('Comment', event);
+                  props.onChange(event.target.name, event);
                 }}
                 />
             </FormItem>
           </Col>
           <Col span={24}>
             <div className="submit">
-              <Button type="primary" htmlType="submit">Save</Button>
+              <Button type={props.checkStyleBtn} htmlType="submit">Save</Button>
             </div>
           </Col>
         </InputGroup>
@@ -82,7 +82,8 @@ const HorizontalForm = props => {
 HorizontalForm.propTypes = {
   inputsAtributes: PropTypes.object,
   onChange: PropTypes.func,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  checkStyleBtn: PropTypes.string
 };
 
 export default HorizontalForm;
