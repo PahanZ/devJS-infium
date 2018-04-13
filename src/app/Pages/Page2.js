@@ -2,60 +2,51 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {addInvoice, redirect} from '../redux/actions';
-import moment from 'moment';
 import Form from '../Components/Form';
 
 class Page2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      key: Math.random().toString(36).replace('.', ''),
-      Create: null,
-      No: 'INV',
-      Supply: null,
-      Comment: ''
+      typeBnt: 'primary',
+      textBtn: 'Save'
     };
-    this.checkStyleBtn = 'primary';
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.btnStyleChange = this.btnStyleChange.bind(this);
+  }
+  btnStyleChange() {
+    this.setState({typeBnt: 'primary', textBtn: 'Save'});
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.isRedirect !== nextProps) {
       this.props.router.push('/');
     }
   }
-  correctDate(date) {
-    return (date === null) ? '' : moment(date._d).format('Do MMMM YYYY');
-  }
   handleSubmit(e) {
     e.preventDefault();
-    const invoice = Object.assign({}, this.state, {
-      Create: this.correctDate(this.state.Create),
-      Supply: this.correctDate(this.state.Supply)
-    });
-    if (invoice.Create === '' ||
-        invoice.Supply === '' ||
-        invoice.No.length === 0) {
-      this.checkStyleBtn = 'danger';
-      this.forceUpdate();
+    const form = e.target;
+    const invoiceData = {
+      Create: form.elements[1].value,
+      No: form.elements[0].value,
+      Supply: form.elements[2].value,
+      Comment: form.elements[3].value
+    };
+    if (Object.values(invoiceData).some(el => el === '')) {
+      this.setState({typeBnt: 'danger', textBtn: 'Fill the filds'});
       return;
     }
-    this.props.addInvoice(invoice);
+    invoiceData.key = Math.random().toString(36).replace('.', '');
+    this.props.addInvoice(invoiceData);
     this.props.redirect(true);
-  }
-  handleChange(objName, e) {
-    const newValue = (e.target) ? e.target.value : e;
-    this.setState({[objName]: newValue});
-    this.checkStyleBtn = 'primary';
   }
   render() {
     // console.log(this.checkStyleBtn);
     return (
       <Form
         inputsAtributes={this.state}
-        onChange={this.handleChange}
         onSubmit={this.handleSubmit}
-        checkStyleBtn={this.checkStyleBtn}
+        checkStyleBtn={this.state}
+        handleChange={this.btnStyleChange}
         />
     );
   }

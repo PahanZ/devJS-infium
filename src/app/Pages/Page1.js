@@ -12,6 +12,7 @@ class Page1 extends React.Component {
     this.props.getInvoices(this.props.invoices);
   }
   render() {
+    console.log(this.props.invoices);
     return (
       <main>
         <Actions/>
