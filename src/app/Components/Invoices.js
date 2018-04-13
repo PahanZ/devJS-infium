@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Table, Button} from 'antd';
 
-const Invoices = props => {
+const Invoices = ({invoicesList, removeInvoice}) => {
   const columns = [
     {
       title: 'Create',
@@ -34,8 +34,8 @@ const Invoices = props => {
       key: 'Remove',
       render: () => <Button
         type="primary"
-        onClick={function () {
-          // props.removeInvoice();
+        onClick={function (e) {
+          removeInvoice(invoicesList, columns[1].key, e);
         }}
         >Remove</Button>
     }
@@ -43,14 +43,14 @@ const Invoices = props => {
   return (
     <section className="invoices">
       <h2>Invoices</h2>
-      <Table columns={columns} dataSource={props.invoicesList}/>
+      <Table columns={columns} dataSource={invoicesList}/>
     </section>
   );
 };
 
 Invoices.propTypes = {
-  invoicesList: PropTypes.array
-  // removeInvoice: PropTypes.func
+  invoicesList: PropTypes.array,
+  removeInvoice: PropTypes.func
 };
 
 export default Invoices;

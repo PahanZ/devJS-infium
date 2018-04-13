@@ -14,18 +14,12 @@ class Page1 extends React.Component {
     this.props.redirect(false);
     this.props.getInvoices(this.props.invoices);
   }
-  removeInvoice() {
-    // props.invoicesList.forEach((el, i) => {
-    //   if (el.key === '5ac1f09a60edb54701c767da') {
-    //     console.log(el);
-    //     props.invoicesList.splice(i, 1);
-    //   }
-    //   // console.log(el);
-    // });
-    this.props.removeInvoice();
+  removeInvoice(invoices, No, e) {
+    const tdValue = e.target.closest('tr').children[1].textContent;
+    const newInvoices = invoices.filter(element => String(element[No]) !== tdValue);
+    this.props.removeInvoice(newInvoices);
   }
   render() {
-    console.log(this.props.invoices);
     return (
       <main>
         <Actions/>
