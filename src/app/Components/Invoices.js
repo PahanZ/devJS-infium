@@ -25,19 +25,22 @@ const Invoices = ({invoicesList, removeInvoice}) => {
       key: 'Comment'
     },
     {
-      title: 'Edit',
-      key: 'Edit',
-      render: () => <Button type="primary">Edit</Button>
-    },
-    {
-      title: 'Remove',
-      key: 'Remove',
-      render: () => <Button
-        type="primary"
-        onClick={function (e) {
-          removeInvoice(invoicesList, columns[1].key, e);
-        }}
-        >Remove</Button>
+      title: 'Actions',
+      key: 'Actions',
+      render: () => {
+        return (
+          <div className="actionColumn">
+            <Button type="primary">Edit</Button>
+            <Button
+              type="primary"
+              onClick={function (e) {
+                removeInvoice(invoicesList, columns[1].key, e);
+              }}
+              >
+            Remove
+            </Button>
+          </div>);
+      }
     }
   ];
   return (

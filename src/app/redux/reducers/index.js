@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import getInvoices from '../reducers/getInvoices';
+import invoicesOperations from '../reducers/invoicesOperations';
 import redirect from '../reducers/redirect';
 
-export default combineReducers({getInvoices, redirect});
+export default combineReducers({invoicesOperations, redirect});
