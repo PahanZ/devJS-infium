@@ -6,6 +6,7 @@ import store from './app/redux/createStore';
 import App from './app/app';
 import Page1 from './app/Pages/Page1';
 import Page2 from './app/Pages/Page2';
+import Page3 from './app/Pages/Page3';
 import './index.scss';
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Page1}/>
         <Route path="/create" component={Page2}/>
+        <Route path="/edit" component={Page3}/>
       </Route>
     </Router>
   </Provider>,

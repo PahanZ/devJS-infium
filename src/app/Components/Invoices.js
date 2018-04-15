@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Table, Button} from 'antd';
+import {Link} from 'react-router';
 
-const Invoices = ({invoicesList, removeInvoice}) => {
+const Invoices = ({invoicesList, removeInvoice, editInvoice}) => {
   const columns = [
     {
       title: 'Create',
@@ -30,7 +31,14 @@ const Invoices = ({invoicesList, removeInvoice}) => {
       render: () => {
         return (
           <div className="actionColumn">
-            <Button type="primary">Edit</Button>
+            <Button type="primary">
+              <Link
+                to="/edit"
+                onClick={function (e) {
+                  editInvoice(invoicesList, columns[1].key, e);
+                }}
+                >Edit</Link>
+            </Button>
             <Button
               type="primary"
               onClick={function (e) {
@@ -53,7 +61,8 @@ const Invoices = ({invoicesList, removeInvoice}) => {
 
 Invoices.propTypes = {
   invoicesList: PropTypes.array,
-  removeInvoice: PropTypes.func
+  removeInvoice: PropTypes.func,
+  editInvoice: PropTypes.func
 };
 
 export default Invoices;

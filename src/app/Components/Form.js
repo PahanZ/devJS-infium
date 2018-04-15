@@ -7,6 +7,9 @@ const InputGroup = Input.Group;
 const {TextArea} = Input;
 const HorizontalForm = props => {
   const {typeBnt, textBtn} = props.checkStyleBtn;
+
+// делать компонент и в componentDidMount обрабатывать пришедшие данные и если их нет
+
   return (
     <main>
       <Form
@@ -67,6 +70,7 @@ HorizontalForm.propTypes = {
   onSubmit: PropTypes.func,
   checkStyleBtn: PropTypes.object,
   handleChange: PropTypes.func
+  // values: PropTypes.object
 };
 
 export default HorizontalForm;

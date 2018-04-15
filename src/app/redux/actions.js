@@ -13,9 +13,19 @@ const removeInvoice = data => ({
   payload: data
 });
 
+const editInvoice = data => ({
+  type: 'editInvoice',
+  payload: data
+});
+
+const getCurrInvoice = data => ({
+  type: 'getCurrInvoice',
+  payload: data
+});
+
 const redirect = data => ({
   type: 'redirect',
   payload: data
 });
 
-export {getInvoices, addInvoice, redirect, removeInvoice};
+export {getInvoices, addInvoice, redirect, removeInvoice, editInvoice, getCurrInvoice};
