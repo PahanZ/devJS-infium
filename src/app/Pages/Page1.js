@@ -29,7 +29,7 @@ class Page1 extends React.Component {
     });
   }
   render() {
-    console.log(this.props.invoice);
+    console.log(this.props.invoices);
     return (
       <main>
         <Actions/>
@@ -48,8 +48,8 @@ Page1.propTypes = {
   invoices: PropTypes.array,
   removeInvoice: PropTypes.func,
   getCurrInvoice: PropTypes.func,
-  redirect: PropTypes.func,
-  invoice: PropTypes.object
+  redirect: PropTypes.func
+  // invoice: PropTypes.object
 };
 
 const mapStateToProps = state => ({

@@ -7,15 +7,7 @@ import Form from '../Components/Form';
 class Page3 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      typeBnt: 'primary',
-      textBtn: 'Save'
-    };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.btnStyleChange = this.btnStyleChange.bind(this);
-  }
-  btnStyleChange() {
-    this.setState({typeBnt: 'primary', textBtn: 'Save'});
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.isRedirect !== nextProps) {
@@ -40,14 +32,12 @@ class Page3 extends React.Component {
     // this.props.redirect(true);
   }
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <Form
         values={this.props.invoice}
         inputsAtributes={this.state}
         onSubmit={this.handleSubmit}
-        checkStyleBtn={this.state}
-        handleChange={this.btnStyleChange}
         />
     );
   }
