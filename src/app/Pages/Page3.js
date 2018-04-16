@@ -32,7 +32,7 @@ class Page3 extends React.Component {
     // this.props.redirect(true);
   }
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <Form
         values={this.props.invoice}

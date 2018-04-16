@@ -16,18 +16,14 @@ class HorizontalForm extends React.Component {
       Create: null,
       Supply: null
     };
-    this.handleChangeCreate = this.handleChangeCreate.bind(this);
-    this.handleChangeSupply = this.handleChangeSupply.bind(this);
+    this.handleChangeCreate = this.handleChange.bind(this, 'Create');
+    this.handleChangeSupply = this.handleChange.bind(this, 'Supply');
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBtnStyleChange = this.handleBtnStyleChange.bind(this);
   }
-  handleChangeCreate(e) {
+  handleChange(option, e) {
     this.handleBtnStyleChange();
-    this.setState({Create: e});
-  }
-  handleChangeSupply(e) {
-    this.handleBtnStyleChange();
-    this.setState({Supply: e});
+    this.setState({[option]: e});
   }
   handleBtnStyleChange() {
     this.setState({typeBnt: 'primary', textBtn: 'Save'});
@@ -41,7 +37,7 @@ class HorizontalForm extends React.Component {
       Supply: this.state.Supply,
       Comment: form.elements.Comment.value
     };
-    if (Object.values(invoiceData).some(el => el === '')) {
+    if (Object.values(invoiceData).some(el => el === '' || el === null)) {
       this.setState({typeBnt: 'danger', textBtn: 'Fill the filds'});
       return;
     }
@@ -53,12 +49,12 @@ class HorizontalForm extends React.Component {
       Comment: invoiceData.Comment
     });
   }
-  // componentDidMount() {
-  //   if (this.props.values !== undefined) {
-  //     const {key, Create, No, Supply, Comment} = this.props.values;
-  //     this.setState({key, Create: moment(Create), No, Supply: moment(Supply), Comment});
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.values !== undefined) {
+      const {Create, Supply} = this.props.values;
+      this.setState({reate: moment(Create), Supply: moment(Supply)});
+    }
+  }
   render() {
     const {typeBnt, textBtn} = this.state;
     return (
@@ -120,8 +116,8 @@ class HorizontalForm extends React.Component {
 }
 
 HorizontalForm.propTypes = {
-  onSubmit: PropTypes.func
-  // values: PropTypes.object
+  onSubmit: PropTypes.func,
+  values: PropTypes.object
 };
 
 export default HorizontalForm;

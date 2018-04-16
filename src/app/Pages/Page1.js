@@ -29,7 +29,7 @@ class Page1 extends React.Component {
     });
   }
   render() {
-    console.log(this.props.invoices);
+    // console.log(this.props.invoices);
     return (
       <main>
         <Actions/>
