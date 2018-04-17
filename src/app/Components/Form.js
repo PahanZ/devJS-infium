@@ -42,20 +42,23 @@ class HorizontalForm extends React.Component {
       return;
     }
     this.props.onSubmit({
-      key: Math.random().toString(36).replace('.', ''),
-      No: invoiceData.No,
-      Create: moment(invoiceData.Create._d).format('Do MMMM YY'),
-      Supply: moment(invoiceData.Supply._d).format('Do MMMM YY'),
+      key: (this.props.values) ?
+        this.props.values.key :
+        Math.random().toString(36).replace('.', ''),
+      No: Number(invoiceData.No),
+      Create: moment(invoiceData.Create._d).format('DD MMM YYYY'),
+      Supply: moment(invoiceData.Supply._d).format('DD MMM YYYY'),
       Comment: invoiceData.Comment
     });
   }
   componentDidMount() {
     if (this.props.values !== undefined) {
       const {Create, Supply} = this.props.values;
-      this.setState({reate: moment(Create), Supply: moment(Supply)});
+      this.setState({Create: moment(Create), Supply: moment(Supply)});
     }
   }
   render() {
+    // console.log(this.props.values.key);
     const {typeBnt, textBtn} = this.state;
     return (
       <main>
@@ -69,6 +72,7 @@ class HorizontalForm extends React.Component {
                 <Input
                   size="large"
                   name="No"
+                  defaultValue={(this.props.values) ? this.props.values.No : ''}
                   onChange={this.handleBtnStyleChange}
                   addonAfter={<Icon type="setting"/>}
                   />
@@ -79,7 +83,7 @@ class HorizontalForm extends React.Component {
                 <DatePicker
                   size="large"
                   value={this.state.Create}
-                  format={'Do MMMM YY'}
+                  format={'DD MMMM YYYY'}
                   onChange={this.handleChangeCreate}
                   />
               </FormItem>
@@ -89,7 +93,7 @@ class HorizontalForm extends React.Component {
                 <DatePicker
                   size="large"
                   value={this.state.Supply}
-                  format={'Do MMMM YY'}
+                  format={'DD MMMM YYYY'}
                   onChange={this.handleChangeSupply}
                   />
               </FormItem>
@@ -98,6 +102,7 @@ class HorizontalForm extends React.Component {
               <FormItem label="Comment">
                 <TextArea
                   rows={24}
+                  defaultValue={(this.props.values) ? this.props.values.Comment : ''}
                   onChange={this.handleBtnStyleChange}
                   name="Comment"
                   />

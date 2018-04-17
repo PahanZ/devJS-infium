@@ -14,25 +14,19 @@ class Page3 extends React.Component {
       this.props.router.push('/');
     }
   }
-  handleSubmit(e) {
-    e.preventDefault();
-    // const form = e.target;
-    // const invoiceData = {
-    //   Create: form.elements[1].value,
-    //   No: form.elements[0].value,
-    //   Supply: form.elements[2].value,
-    //   Comment: form.elements[3].value
-    // };
-    // if (Object.values(invoiceData).some(el => el === '')) {
-    //   this.setState({typeBnt: 'danger', textBtn: 'Fill the filds'});
-    //   return;
-    // }
-    // invoiceData.key = Math.random().toString(36).replace('.', '');
-    // this.props.addInvoice(invoiceData);
-    // this.props.redirect(true);
+  handleSubmit({key, Create, No, Supply, Comment}) {
+    const newInvoice = {key, Create, No, Supply, Comment};
+    this.props.invoices.map((element, i) => {
+      if (element.key === key) {
+        return this.props.invoices.splice(i, 1, newInvoice);
+      }
+      return element;
+    });
+    this.props.editInvoice(this.props.invoices);
+    this.props.redirect(true);
   }
   render() {
-    console.log(this.props);
+    // console.log(this.props.invoices);
     return (
       <Form
         values={this.props.invoice}
@@ -44,15 +38,18 @@ class Page3 extends React.Component {
 }
 
 Page3.propTypes = {
-  // redirect: PropTypes.func,
+  redirect: PropTypes.func,
   invoice: PropTypes.object,
   isRedirect: PropTypes.bool,
-  router: PropTypes.object
+  router: PropTypes.object,
+  invoices: PropTypes.array,
+  editInvoice: PropTypes.func
 };
 
 const mapStateToProps = state => ({
   invoice: state.getCurrInvoice,
-  isRedirect: state.redirect
+  isRedirect: state.redirect,
+  invoices: state.getInvoices
 });
 
 const mapDispatchToProps = {
