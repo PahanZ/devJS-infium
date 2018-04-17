@@ -15,15 +15,13 @@ class Page1 extends React.Component {
     this.props.redirect(false);
     this.props.getInvoices(this.props.invoices);
   }
-  removeInvoice(invoices, No, e) {
-    const tdValue = e.target.closest('tr').children[1].textContent;
-    const newInvoices = invoices.filter(element => String(element[No]) !== tdValue);
+  removeInvoice({row, invoicesList, No}) {
+    const newInvoices = invoicesList.filter(element => element[No] !== row.No);
     this.props.removeInvoice(newInvoices);
   }
-  editInvoice(invoices, No, e) {
-    const tdValue = e.target.closest('tr').children[1].textContent;
-    invoices.forEach(element => {
-      if (String(element[No]) === tdValue) {
+  editInvoice({row, invoicesList, No}) {
+    invoicesList.forEach(element => {
+      if (element[No] === row.No) {
         this.props.getCurrInvoice(element);
       }
     });

@@ -28,21 +28,21 @@ const Invoices = ({invoicesList, removeInvoice, editInvoice}) => {
     {
       title: 'Actions',
       key: 'Actions',
-      render: () => {
+      render: row => {
         return (
           <div className="actionColumn">
             <Button type="primary">
               <Link
                 to="/edit"
-                onClick={function (e) {
-                  editInvoice(invoicesList, columns[1].key, e);
+                onClick={function () {
+                  editInvoice({row, invoicesList, No: columns[1].key});
                 }}
                 >Edit</Link>
             </Button>
             <Button
               type="primary"
-              onClick={function (e) {
-                removeInvoice(invoicesList, columns[1].key, e);
+              onClick={function () {
+                removeInvoice({row, invoicesList, No: columns[1].key});
               }}
               >
             Remove
