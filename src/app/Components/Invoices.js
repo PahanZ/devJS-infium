@@ -35,14 +35,14 @@ const Invoices = ({invoicesList, removeInvoice, editInvoice}) => {
               <Link
                 to="/edit"
                 onClick={function () {
-                  editInvoice({row, invoicesList, No: columns[1].key});
+                  editInvoice({row, invoicesList});
                 }}
                 >Edit</Link>
             </Button>
             <Button
               type="primary"
               onClick={function () {
-                removeInvoice({row, invoicesList, No: columns[1].key});
+                removeInvoice({row, invoicesList});
               }}
               >
             Remove
@@ -54,13 +54,13 @@ const Invoices = ({invoicesList, removeInvoice, editInvoice}) => {
   return (
     <section className="invoices">
       <h2>Invoices</h2>
-      <Table columns={columns} dataSource={invoicesList}/>
+      <Table columns={columns} dataSource={Object.values(invoicesList)}/>
     </section>
   );
 };
 
 Invoices.propTypes = {
-  invoicesList: PropTypes.array,
+  invoicesList: PropTypes.object,
   removeInvoice: PropTypes.func,
   editInvoice: PropTypes.func
 };

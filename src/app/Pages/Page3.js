@@ -14,14 +14,9 @@ class Page3 extends React.Component {
       this.props.router.push('/');
     }
   }
-  handleSubmit({key, Create, No, Supply, Comment}) {
-    const newInvoice = {key, Create, No, Supply, Comment};
-    this.props.invoices.map((element, i) => {
-      if (element.key === key) {
-        return this.props.invoices.splice(i, 1, newInvoice);
-      }
-      return element;
-    });
+  handleSubmit({id, Create, No, Supply, Comment}) {
+    const newInvoice = {id, Create, No, Supply, Comment};
+    this.props.invoices[id] = newInvoice;
     this.props.editInvoice(this.props.invoices);
     this.props.redirect(true);
   }
@@ -42,7 +37,7 @@ Page3.propTypes = {
   invoice: PropTypes.object,
   isRedirect: PropTypes.bool,
   router: PropTypes.object,
-  invoices: PropTypes.array,
+  invoices: PropTypes.object,
   editInvoice: PropTypes.func
 };
 

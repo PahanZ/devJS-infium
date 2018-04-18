@@ -42,8 +42,8 @@ class HorizontalForm extends React.Component {
       return;
     }
     this.props.onSubmit({
-      key: (this.props.values) ?
-        this.props.values.key :
+      id: (this.props.values) ?
+        this.props.values.id :
         Math.random().toString(36).replace('.', ''),
       No: Number(invoiceData.No),
       Create: moment(invoiceData.Create._d).format('DD MMM YYYY'),

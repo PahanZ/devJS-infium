@@ -15,16 +15,13 @@ class Page1 extends React.Component {
     this.props.redirect(false);
     this.props.getInvoices(this.props.invoices);
   }
-  removeInvoice({row, invoicesList, No}) {
-    const newInvoices = invoicesList.filter(element => element[No] !== row.No);
-    this.props.removeInvoice(newInvoices);
+  removeInvoice({row, invoicesList}) {
+    delete invoicesList[row.id];
+    this.props.removeInvoice(invoicesList);
+    this.forceUpdate();
   }
-  editInvoice({row, invoicesList, No}) {
-    invoicesList.forEach(element => {
-      if (element[No] === row.No) {
-        this.props.getCurrInvoice(element);
-      }
-    });
+  editInvoice({row, invoicesList}) {
+    this.props.getCurrInvoice(invoicesList[row.id]);
   }
   render() {
     // console.log(this.props.invoices);
@@ -43,7 +40,7 @@ class Page1 extends React.Component {
 
 Page1.propTypes = {
   getInvoices: PropTypes.func,
-  invoices: PropTypes.array,
+  invoices: PropTypes.object,
   removeInvoice: PropTypes.func,
   getCurrInvoice: PropTypes.func,
   redirect: PropTypes.func
