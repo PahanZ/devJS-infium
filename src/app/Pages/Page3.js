@@ -14,14 +14,13 @@ class Page3 extends React.Component {
       this.props.router.push('/');
     }
   }
-  handleSubmit({id, Create, No, Supply, Comment}) {
-    const newInvoice = {id, Create, No, Supply, Comment};
-    this.props.invoices[id] = newInvoice;
-    this.props.editInvoice(this.props.invoices);
+  handleSubmit({id, create, no, supply, comment}) {
+    const newInvoice = {id, create, no, supply, comment};
+    this.props.editInvoice(newInvoice, newInvoice.id);
     this.props.redirect(true);
   }
   render() {
-    // console.log(this.props.invoices);
+    console.log(this.props);
     return (
       <Form
         values={this.props.invoice}
@@ -37,7 +36,6 @@ Page3.propTypes = {
   invoice: PropTypes.object,
   isRedirect: PropTypes.bool,
   router: PropTypes.object,
-  invoices: PropTypes.object,
   editInvoice: PropTypes.func
 };
 

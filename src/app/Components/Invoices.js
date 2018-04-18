@@ -7,27 +7,22 @@ const Invoices = ({invoicesList, removeInvoice, editInvoice}) => {
   const columns = [
     {
       title: 'Create',
-      dataIndex: 'Create',
-      key: 'Create'
+      dataIndex: 'create'
     },
     {
       title: 'No',
-      dataIndex: 'No',
-      key: 'No'
+      dataIndex: 'no'
     },
     {
       title: 'Supply',
-      dataIndex: 'Supply',
-      key: 'Supply'
+      dataIndex: 'supply'
     },
     {
       title: 'Comment',
-      dataIndex: 'Comment',
-      key: 'Comment'
+      dataIndex: 'comment'
     },
     {
       title: 'Actions',
-      key: 'Actions',
       render: row => {
         return (
           <div className="actionColumn">
@@ -42,19 +37,26 @@ const Invoices = ({invoicesList, removeInvoice, editInvoice}) => {
             <Button
               type="primary"
               onClick={function () {
-                removeInvoice({row, invoicesList});
+                removeInvoice(row);
               }}
               >
             Remove
             </Button>
-          </div>);
+          </div>
+        );
       }
     }
   ];
   return (
     <section className="invoices">
       <h2>Invoices</h2>
-      <Table columns={columns} dataSource={Object.values(invoicesList)}/>
+      <Table
+        rowKey={function (invoicesList) {
+          return invoicesList.id;
+        }}
+        columns={columns}
+        dataSource={Object.values(invoicesList)}
+        />
     </section>
   );
 };

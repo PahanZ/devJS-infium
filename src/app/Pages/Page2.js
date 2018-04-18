@@ -14,11 +14,9 @@ class Page2 extends React.Component {
       this.props.router.push('/');
     }
   }
-  handleSubmit({id, Create, No, Supply, Comment}) {
-    const newInvoice = {id, Create, No, Supply, Comment};
-    this.props.invoices[id] = newInvoice;
-    this.props.addInvoice(this.props.invoices);
-    console.log(this.props.invoices);
+  handleSubmit({id, create, no, supply, comment}) {
+    const newInvoice = {id, create, no, supply, comment};
+    this.props.addInvoice(newInvoice, newInvoice.id);
     this.props.redirect(true);
   }
   render() {
@@ -35,8 +33,7 @@ Page2.propTypes = {
   addInvoice: PropTypes.func,
   redirect: PropTypes.func,
   isRedirect: PropTypes.bool,
-  router: PropTypes.object,
-  invoices: PropTypes.object
+  router: PropTypes.object
 };
 
 const mapStateToProps = state => ({

@@ -13,11 +13,11 @@ class HorizontalForm extends React.Component {
     this.state = {
       typeBnt: 'primary',
       textBtn: 'Save',
-      Create: null,
-      Supply: null
+      create: null,
+      supply: null
     };
-    this.handleChangeCreate = this.handleChange.bind(this, 'Create');
-    this.handleChangeSupply = this.handleChange.bind(this, 'Supply');
+    this.handleChangeCreate = this.handleChange.bind(this, 'create');
+    this.handleChangeSupply = this.handleChange.bind(this, 'supply');
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBtnStyleChange = this.handleBtnStyleChange.bind(this);
   }
@@ -32,10 +32,10 @@ class HorizontalForm extends React.Component {
     e.preventDefault();
     const form = e.target;
     const invoiceData = {
-      No: form.elements.No.value,
-      Create: this.state.Create,
-      Supply: this.state.Supply,
-      Comment: form.elements.Comment.value
+      no: form.elements.no.value,
+      create: this.state.create,
+      supply: this.state.supply,
+      comment: form.elements.comment.value
     };
     if (Object.values(invoiceData).some(el => el === '' || el === null)) {
       this.setState({typeBnt: 'danger', textBtn: 'Fill the filds'});
@@ -45,16 +45,16 @@ class HorizontalForm extends React.Component {
       id: (this.props.values) ?
         this.props.values.id :
         Math.random().toString(36).replace('.', ''),
-      No: Number(invoiceData.No),
-      Create: moment(invoiceData.Create._d).format('DD MMM YYYY'),
-      Supply: moment(invoiceData.Supply._d).format('DD MMM YYYY'),
-      Comment: invoiceData.Comment
+      no: invoiceData.no,
+      create: moment(invoiceData.create._d).format('DD MMM YYYY'),
+      supply: moment(invoiceData.supply._d).format('DD MMM YYYY'),
+      comment: invoiceData.comment
     });
   }
   componentDidMount() {
     if (this.props.values !== undefined) {
-      const {Create, Supply} = this.props.values;
-      this.setState({Create: moment(Create), Supply: moment(Supply)});
+      const {create, supply} = this.props.values;
+      this.setState({create: moment(create), supply: moment(supply)});
     }
   }
   render() {
@@ -71,8 +71,8 @@ class HorizontalForm extends React.Component {
               <FormItem label="Number">
                 <Input
                   size="large"
-                  name="No"
-                  defaultValue={(this.props.values) ? this.props.values.No : ''}
+                  name="no"
+                  defaultValue={(this.props.values) ? this.props.values.no : ''}
                   onChange={this.handleBtnStyleChange}
                   addonAfter={<Icon type="setting"/>}
                   />
@@ -82,7 +82,7 @@ class HorizontalForm extends React.Component {
               <FormItem label="Invoice Date">
                 <DatePicker
                   size="large"
-                  value={this.state.Create}
+                  value={this.state.create}
                   format={'DD MMMM YYYY'}
                   onChange={this.handleChangeCreate}
                   />
@@ -92,7 +92,7 @@ class HorizontalForm extends React.Component {
               <FormItem label="Supply Date">
                 <DatePicker
                   size="large"
-                  value={this.state.Supply}
+                  value={this.state.supply}
                   format={'DD MMMM YYYY'}
                   onChange={this.handleChangeSupply}
                   />
@@ -102,9 +102,9 @@ class HorizontalForm extends React.Component {
               <FormItem label="Comment">
                 <TextArea
                   rows={24}
-                  defaultValue={(this.props.values) ? this.props.values.Comment : ''}
+                  defaultValue={(this.props.values) ? this.props.values.comment : ''}
                   onChange={this.handleBtnStyleChange}
-                  name="Comment"
+                  name="comment"
                   />
               </FormItem>
             </Col>

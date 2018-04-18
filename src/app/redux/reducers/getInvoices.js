@@ -2,12 +2,18 @@ import {getInvoices, addInvoice, removeInvoice, editInvoice} from '../constants'
 import dataFoTabble from '../../data/dataFoTabble';
 
 export default (state = dataFoTabble, action) => {
-  if (action.type === getInvoices ||
-    action.type === removeInvoice ||
-    action.type === editInvoice ||
-    action.type === addInvoice
-  ) {
-    return action.payload;
+  switch (action.type) {
+    case getInvoices: return action.payload;
+    case editInvoice:
+      state[action.payload2] = action.payload;
+      return Object.assign({}, state);
+    case addInvoice:
+      state[action.payload2] = action.payload;
+      return Object.assign({}, state);
+    case removeInvoice:
+      delete state[action.payload];
+      return Object.assign({}, state);
+    default:
+      return state;
   }
-  return state;
 };

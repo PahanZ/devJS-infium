@@ -15,16 +15,14 @@ class Page1 extends React.Component {
     this.props.redirect(false);
     this.props.getInvoices(this.props.invoices);
   }
-  removeInvoice({row, invoicesList}) {
-    delete invoicesList[row.id];
-    this.props.removeInvoice(invoicesList);
-    this.forceUpdate();
+  removeInvoice(row) {
+    this.props.removeInvoice(row.id);
   }
   editInvoice({row, invoicesList}) {
     this.props.getCurrInvoice(invoicesList[row.id]);
   }
   render() {
-    // console.log(this.props.invoices);
+    console.log(this.props);
     return (
       <main>
         <Actions/>
@@ -44,7 +42,6 @@ Page1.propTypes = {
   removeInvoice: PropTypes.func,
   getCurrInvoice: PropTypes.func,
   redirect: PropTypes.func
-  // invoice: PropTypes.object
 };
 
 const mapStateToProps = state => ({
