@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getInvoices, redirect, removeInvoice, getCurrInvoice} from '../redux/actions';
+import {redirect, removeInvoice, getCurrInvoice} from '../redux/actions';
 import PropTypes from 'prop-types';
 import Actions from '../Components/Actions';
 import Invoices from '../Components/Invoices';
@@ -13,7 +13,6 @@ class Page1 extends React.Component {
   }
   componentDidMount() {
     this.props.redirect(false);
-    this.props.getInvoices();
   }
   removeInvoice(row) {
     this.props.removeInvoice(row.id);
@@ -22,7 +21,6 @@ class Page1 extends React.Component {
     this.props.getCurrInvoice(invoicesList[row.id]);
   }
   render() {
-    // console.log(this.props.invoices);
     return (
       <main>
         <Actions/>
@@ -37,7 +35,6 @@ class Page1 extends React.Component {
 }
 
 Page1.propTypes = {
-  getInvoices: PropTypes.func,
   invoices: PropTypes.object,
   removeInvoice: PropTypes.func,
   getCurrInvoice: PropTypes.func,
@@ -50,7 +47,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getInvoices,
   removeInvoice,
   getCurrInvoice,
   redirect
