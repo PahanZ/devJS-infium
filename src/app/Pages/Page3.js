@@ -16,11 +16,10 @@ class Page3 extends React.Component {
   }
   handleSubmit({id, create, no, supply, comment}) {
     const newInvoice = {id, create, no, supply, comment};
-    this.props.editInvoice(newInvoice, newInvoice.id);
+    this.props.editInvoice(newInvoice);
     this.props.redirect(true);
   }
   render() {
-    console.log(this.props);
     return (
       <Form
         values={this.props.invoice}

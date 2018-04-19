@@ -3,10 +3,9 @@ const getInvoices = data => ({
   payload: data
 });
 
-const addInvoice = (invoicer, id) => ({
+const addInvoice = data => ({
   type: 'addInvoice',
-  payload: invoicer,
-  payload2: id
+  payload: data
 });
 
 const removeInvoice = data => ({
@@ -14,10 +13,9 @@ const removeInvoice = data => ({
   payload: data
 });
 
-const editInvoice = (invoicer, id) => ({
+const editInvoice = data => ({
   type: 'editInvoice',
-  payload: invoicer,
-  payload2: id
+  payload: data
 });
 
 const getCurrInvoice = data => ({

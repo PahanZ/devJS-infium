@@ -22,7 +22,6 @@ class Page1 extends React.Component {
     this.props.getCurrInvoice(invoicesList[row.id]);
   }
   render() {
-    console.log(this.props);
     return (
       <main>
         <Actions/>

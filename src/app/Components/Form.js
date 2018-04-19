@@ -58,7 +58,6 @@ class HorizontalForm extends React.Component {
     }
   }
   render() {
-    // console.log(this.props.values.key);
     const {typeBnt, textBtn} = this.state;
     return (
       <main>
