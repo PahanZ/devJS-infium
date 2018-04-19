@@ -28,6 +28,7 @@ module.exports = function () {
         webpackHotMiddleware(webpackBundler)
       ]
     },
+    port: 8080,
     open: false
   };
 };

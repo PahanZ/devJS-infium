@@ -1,7 +1,6 @@
 import {getInvoices, addInvoice, removeInvoice, editInvoice} from '../constants';
-import dataFoTabble from '../../data/dataFoTabble';
 
-export default (state = dataFoTabble, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case getInvoices: return action.payload;
     case editInvoice: return Object.assign(state, {[action.payload.id]: action.payload});
