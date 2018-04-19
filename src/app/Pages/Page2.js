@@ -16,7 +16,7 @@ class Page2 extends React.Component {
   }
   handleSubmit({id, create, no, supply, comment}) {
     const newInvoice = {id, create, no, supply, comment};
-    this.props.addInvoice(newInvoice, newInvoice.id);
+    this.props.addInvoice(newInvoice);
     this.props.redirect(true);
   }
   render() {

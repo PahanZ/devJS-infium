@@ -13,7 +13,7 @@ class Page1 extends React.Component {
   }
   componentDidMount() {
     this.props.redirect(false);
-    this.props.getInvoices(this.props.invoices);
+    this.props.getInvoices();
   }
   removeInvoice(row) {
     this.props.removeInvoice(row.id);
