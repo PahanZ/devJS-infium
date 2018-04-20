@@ -29,14 +29,14 @@ const Invoices = ({invoicesList, removeInvoice, editInvoice}) => {
             <Button type="primary">
               <Link
                 to="/edit"
-                onClick={function () {
+                onClick={() => {
                   editInvoice({row, invoicesList});
                 }}
                 >Edit</Link>
             </Button>
             <Button
               type="primary"
-              onClick={function () {
+              onClick={() => {
                 removeInvoice(row);
               }}
               >

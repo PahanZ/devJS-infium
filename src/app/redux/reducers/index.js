@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
-import getInvoices from '../reducers/getInvoices';
-import getCurrInvoice from '../reducers/getCurrInvoice';
-import redirect from '../reducers/redirect';
+import invoices from '../reducers/invoices';
+import currInvoice from '../reducers/currInvoice';
 
-export default combineReducers({getInvoices, getCurrInvoice, redirect});
+export default combineReducers({invoices, currInvoice});

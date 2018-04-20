@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {addInvoice, redirect} from '../redux/actions';
+import {addInvoice} from '../redux/actions';
 import Form from '../Components/Form';
 
 class Page2 extends React.Component {
@@ -9,15 +9,10 @@ class Page2 extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentWillReceiveProps(nextProps) {
-    if (this.props.isRedirect !== nextProps) {
-      this.props.router.push('/');
-    }
-  }
   handleSubmit({id, create, no, supply, comment}) {
     const newInvoice = {id, create, no, supply, comment};
     this.props.addInvoice(newInvoice);
-    this.props.redirect(true);
+    this.props.router.push('/');
   }
   render() {
     return (
@@ -31,19 +26,16 @@ class Page2 extends React.Component {
 
 Page2.propTypes = {
   addInvoice: PropTypes.func,
-  redirect: PropTypes.func,
-  isRedirect: PropTypes.bool,
   router: PropTypes.object
 };
 
 const mapStateToProps = state => ({
   isRedirect: state.redirect,
-  invoices: state.getInvoices
+  invoices: state.invoices
 });
 
 const mapDispatchToProps = {
-  addInvoice,
-  redirect
+  addInvoice
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page2);

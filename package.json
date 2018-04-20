@@ -82,6 +82,14 @@
       "xo-react/space",
       "xo-space/esnext"
     ],
+    "rules": {
+      "react/jsx-no-bind": [
+        2,
+        {
+          "allowArrowFunctions": true
+        }
+      ]
+    },
     "parser": "babel-eslint"
   }
 }

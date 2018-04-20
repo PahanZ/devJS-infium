@@ -4,18 +4,18 @@ import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import store from './app/redux/createStore';
 import App from './app/app';
-import Page1 from './app/Pages/Page1';
-import Page2 from './app/Pages/Page2';
-import Page3 from './app/Pages/Page3';
+import tabbleInvoices from './app/Pages/tabbleInvoices';
+import formAddInvoice from './app/Pages/formAddInvoice';
+import formEditInvoice from './app/Pages/formEditInvoice';
 import './index.scss';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={Page1}/>
-        <Route path="/create" component={Page2}/>
-        <Route path="/edit" component={Page3}/>
+        <IndexRoute component={tabbleInvoices}/>
+        <Route path="/create" component={formAddInvoice}/>
+        <Route path="/edit" component={formEditInvoice}/>
       </Route>
     </Router>
   </Provider>,

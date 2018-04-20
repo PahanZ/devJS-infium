@@ -46,9 +46,4 @@ const getCurrInvoice = data => ({
   payload: data
 });
 
-const redirect = data => ({
-  type: 'redirect',
-  payload: data
-});
-
-export {getInvoices, addInvoice, redirect, removeInvoice, editInvoice, getCurrInvoice};
+export {getInvoices, addInvoice, removeInvoice, editInvoice, getCurrInvoice};
