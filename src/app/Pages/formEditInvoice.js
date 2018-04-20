@@ -39,7 +39,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   editInvoice
-  // redirect
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page3);

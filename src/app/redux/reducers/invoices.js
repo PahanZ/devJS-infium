@@ -1,11 +1,11 @@
-import {getInvoices, addInvoice, removeInvoice, editInvoice} from '../constants';
+import {GET_INVOICES, ADD_INVOICE, REMOVE_INVOICE, EDIT_INVOICE, GET_CURR_INVOICE} from '../types';
 
-export default (state = {}, action) => {
+const invoices = (state = {}, action) => {
   switch (action.type) {
-    case getInvoices: return action.payload;
-    case editInvoice: return Object.assign({}, state, {[action.payload.id]: action.payload});
-    case addInvoice: return Object.assign({}, state, {[action.payload.id]: action.payload});
-    case removeInvoice: {
+    case GET_INVOICES: return action.payload;
+    case EDIT_INVOICE: return Object.assign({}, state, {[action.payload.id]: action.payload});
+    case ADD_INVOICE: return Object.assign({}, state, {[action.payload.id]: action.payload});
+    case REMOVE_INVOICE: {
       const newstate = Object.assign({}, state);
       delete newstate[action.payload];
       return newstate;
@@ -14,3 +14,12 @@ export default (state = {}, action) => {
       return state;
   }
 };
+
+const currInvoice = (state = {}, action) => {
+  if (action.type === GET_CURR_INVOICE) {
+    return action.payload;
+  }
+  return state;
+};
+
+export {invoices, currInvoice};
