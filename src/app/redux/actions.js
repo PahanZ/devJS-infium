@@ -20,29 +20,29 @@ const getInvoices = () => dispatch => (
     })
     .then(responce => {
       dispatch({
-        type: 'getInvoices',
+        type: 'app/invoices/get',
         payload: responce
       });
     })
 );
 
 const addInvoice = data => ({
-  type: 'addInvoice',
+  type: 'app/invoices/add',
   payload: data
 });
 
 const removeInvoice = data => ({
-  type: 'removeInvoice',
+  type: 'app/invoices/remove',
   payload: data
 });
 
 const editInvoice = data => ({
-  type: 'editInvoice',
+  type: 'app/invoices/edit',
   payload: data
 });
 
 const getCurrInvoice = data => ({
-  type: 'getCurrInvoice',
+  type: 'app/invoices/getCurrent',
   payload: data
 });
 
